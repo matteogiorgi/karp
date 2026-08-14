@@ -1,2 +1,7 @@
 **/tags
 .vscode
+_site/
+vendor/
+.bundle/
+.jekyll-cache/
+.jekyll-metadata

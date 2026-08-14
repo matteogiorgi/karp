@@ -2,7 +2,7 @@
 
 ## 3.1 Definition
 
-Given two decision problems $A, B \subseteq \Sigma^*$, a **polynomial many-one reduction** (or **Karp reduction**) from $A$ to $B$ is a function $f: \Sigma^* \to \Sigma^*$ such that:
+Given two decision problems $A, B \subseteq \Sigma^\*$, a **polynomial many-one reduction** (or **Karp reduction**) from $A$ to $B$ is a function $f: \Sigma^\* \to \Sigma^\*$ such that:
 
 1. $f$ is **total and computable in polynomial time** (a deterministic algorithm exists that computes $f(x)$ in time $\le p(|x|)$ for every $x$, for some fixed polynomial $p$);
 2. for every instance $x$: $x \in A \iff f(x) \in B$.
