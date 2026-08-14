@@ -23,4 +23,10 @@ In the literature, when NP-completeness is referred to generically without speci
 
 ---
 
-[← Previous: 2. What Complexity Classes Are For](02-purpose-of-complexity-classes.md) · [README](../README.md) · [Next: 4. What Reductions Are For →](04-purpose-of-reductions.md)
+<table>
+<tr>
+<td align="left"><a href="02-purpose-of-complexity-classes.md">← Previous: 2. What Complexity Classes Are For</a></td>
+<td align="center"><a href="../README.md">README</a></td>
+<td align="right"><a href="04-purpose-of-reductions.md">Next: 4. What Reductions Are For →</a></td>
+</tr>
+</table>

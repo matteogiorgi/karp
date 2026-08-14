@@ -51,4 +51,10 @@ This asymmetry is not an erudite detail: it resurfaces exactly when, in the sect
 
 ---
 
-[README](../README.md) · [Next: 2. What Complexity Classes Are For →](02-purpose-of-complexity-classes.md)
+<table>
+<tr>
+<td align="left"></td>
+<td align="center"><a href="../README.md">README</a></td>
+<td align="right"><a href="02-purpose-of-complexity-classes.md">Next: 2. What Complexity Classes Are For →</a></td>
+</tr>
+</table>
