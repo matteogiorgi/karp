@@ -33,10 +33,6 @@ This is exactly why this project can limit itself to building a **chain** of red
 
 ---
 
-<table>
-<tr>
-<td align="left"><a href="03-polynomial-many-one-reductions.md">← Previous: 3. Polynomial Many-One Reductions</a></td>
-<td align="center"><a href="../README.md">README</a></td>
-<td align="right"><a href="05-cook-levin-and-practice.md">Next: 5. Cook–Levin and Practice →</a></td>
-</tr>
-</table>
+| | | |
+|:---|:---:|---:|
+| [← Previous: 3. Polynomial Many-One Reductions](03-polynomial-many-one-reductions.md) | [README](../README.md) | [Next: 5. Cook–Levin and Practice →](05-cook-levin-and-practice.md) |

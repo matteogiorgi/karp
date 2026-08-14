@@ -42,10 +42,6 @@ This distinction — a written proof for the universal statement, an executable 
 
 ---
 
-<table>
-<tr>
-<td align="left"><a href="04-purpose-of-reductions.md">← Previous: 4. What Reductions Are For</a></td>
-<td align="center"><a href="../README.md">README</a></td>
-<td align="right"><a href="06-pipeline-architecture.md">Next: 6. Pipeline Architecture →</a></td>
-</tr>
-</table>
+| | | |
+|:---|:---:|---:|
+| [← Previous: 4. What Reductions Are For](04-purpose-of-reductions.md) | [README](../README.md) | [Next: 6. Pipeline Architecture →](06-pipeline-architecture.md) |

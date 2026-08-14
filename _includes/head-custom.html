@@ -1,3 +1,20 @@
+<style>
+  /* the last table on each doc page is always the prev/README/next footer nav */
+  table:last-of-type thead { display: none; }
+  table:last-of-type tbody,
+  table:last-of-type tr {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+  table:last-of-type td {
+    display: block;
+    border: none;
+    white-space: nowrap;
+  }
+</style>
+
 <script>
 MathJax = {
   tex: {

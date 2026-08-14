@@ -66,10 +66,6 @@ With this section the report has completed the full circle announced at the star
 
 ---
 
-<table>
-<tr>
-<td align="left"><a href="05-cook-levin-and-practice.md">← Previous: 5. Cook–Levin and Practice</a></td>
-<td align="center"><a href="../README.md">README</a></td>
-<td align="right"></td>
-</tr>
-</table>
+| | | |
+|:---|:---:|---:|
+| [← Previous: 5. Cook–Levin and Practice](05-cook-levin-and-practice.md) | [README](../README.md) | |

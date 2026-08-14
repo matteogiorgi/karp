@@ -28,10 +28,6 @@ P and NP, as defined here, talk about direct computation on a single problem: an
 
 ---
 
-<table>
-<tr>
-<td align="left"><a href="01-decision-problems-p-np.md">← Previous: 1. Decision Problems, P and NP</a></td>
-<td align="center"><a href="../README.md">README</a></td>
-<td align="right"><a href="03-polynomial-many-one-reductions.md">Next: 3. Polynomial Many-One Reductions →</a></td>
-</tr>
-</table>
+| | | |
+|:---|:---:|---:|
+| [← Previous: 1. Decision Problems, P and NP](01-decision-problems-p-np.md) | [README](../README.md) | [Next: 3. Polynomial Many-One Reductions →](03-polynomial-many-one-reductions.md) |
