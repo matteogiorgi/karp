@@ -2,9 +2,9 @@
 
 ## 4.1 Transferring difficulty: the "easy" direction
 
-If $A \le_p B$ via $f$, and $B \in P$, then $A \in P$. The proof is the direct composition of the two algorithms: to decide $x \in A$, compute $y = f(x)$ (polynomial time by definition of reduction), then run on $y$ the polynomial algorithm for $B$ (polynomial time in $|y|$).
+If $A \le_p B$ via $f$, and $B \in P$, then $A \in P$. The proof is the direct composition of the two algorithms: to decide $x \in A$, compute $y = f(x)$ (polynomial time by definition of reduction), then run on $y$ the polynomial algorithm for $B$ (polynomial time in $\|y\|$).
 
-The point that makes the argument non-trivial is the composition of sizes: $f$ runs in polynomial time, so its *output* $y$ has length polynomial in $|x|$ (it cannot write more characters than the number of steps it takes). Hence the second algorithm, polynomial in $|y|$, is in turn polynomial in $|x|$ — the composition of two polynomials is a polynomial. This is precisely why the definition of reduction ([Section 3.1](03-polynomial-many-one-reductions.md#31-definition)) requires $f$ to be computable in polynomial time, and not merely computable: an $f$ that is computable but exponential would still transfer the relation $x \in A \iff f(x) \in B$, but it would break the efficiency chain — and with it, the only reason the reduction is interesting.
+The point that makes the argument non-trivial is the composition of sizes: $f$ runs in polynomial time, so its *output* $y$ has length polynomial in $\|x\|$ (it cannot write more characters than the number of steps it takes). Hence the second algorithm, polynomial in $\|y\|$, is in turn polynomial in $\|x\|$ — the composition of two polynomials is a polynomial. This is precisely why the definition of reduction ([Section 3.1](03-polynomial-many-one-reductions.md#31-definition)) requires $f$ to be computable in polynomial time, and not merely computable: an $f$ that is computable but exponential would still transfer the relation $x \in A \iff f(x) \in B$, but it would break the efficiency chain — and with it, the only reason the reduction is interesting.
 
 ## 4.2 Transferring difficulty: the "hard" direction (by contraposition)
 

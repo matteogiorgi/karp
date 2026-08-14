@@ -4,7 +4,7 @@
 
 Given two decision problems $A, B \subseteq \Sigma^\*$, a **polynomial many-one reduction** (or **Karp reduction**) from $A$ to $B$ is a function $f: \Sigma^\* \to \Sigma^\*$ such that:
 
-1. $f$ is **total and computable in polynomial time** (a deterministic algorithm exists that computes $f(x)$ in time $\le p(|x|)$ for every $x$, for some fixed polynomial $p$);
+1. $f$ is **total and computable in polynomial time** (a deterministic algorithm exists that computes $f(x)$ in time $\le p(\|x\|)$ for every $x$, for some fixed polynomial $p$);
 2. for every instance $x$: $x \in A \iff f(x) \in B$.
 
 This is written $A \le_p B$ ("$A$ reduces to $B$"), and $f$ is read as a **witness** of that relation: its mere existence is the proof that $A \le_p B$ holds.

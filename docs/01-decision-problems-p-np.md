@@ -8,7 +8,7 @@ We work with decision problems, rather than directly with search problems ("find
 
 ## 1.2 The class P
 
-A language $L$ is in **P** if there exists a deterministic algorithm that, for every instance $x$, decides $x \in L$ in a number of steps bounded by $p(|x|)$ for some fixed polynomial $p$.
+A language $L$ is in **P** if there exists a deterministic algorithm that, for every instance $x$, decides $x \in L$ in a number of steps bounded by $p(\|x\|)$ for some fixed polynomial $p$.
 
 The degree of the polynomial does not matter for the definition — only that a polynomial bound exists, uniform over all instances. This cutoff is deliberately coarse relative to practice (an $O(n^{100})$ algorithm is "efficient" by this definition but unusable) but it is the right one for theory, for a robustness reason discussed in [Section 2](02-purpose-of-complexity-classes.md).
 
@@ -17,7 +17,7 @@ The degree of the polynomial does not matter for the definition — only that a 
 The most operationally useful definition — and the one this project adopts as primary — is:
 
 > $L \in NP$ if there exists a deterministic algorithm $V$ (the **verifier**) and a polynomial $p$ such that, for every $x$:
-> $x \in L$ **if and only if** there exists a string $y$ (the **certificate**, or witness) with $|y| \le p(|x|)$ such that $V(x, y)$ accepts in time polynomial in $|x|$.
+> $x \in L$ **if and only if** there exists a string $y$ (the **certificate**, or witness) with $\|y\| \le p(\|x\|)$ such that $V(x, y)$ accepts in time polynomial in $\|x\|$.
 
 In words: belonging to NP does not mean "I can decide quickly", it means "if the answer is yes, a short proof of that fact exists, and that proof is quick to check". Searching for the certificate can be arbitrarily expensive; *verifying* it cannot.
 
