@@ -2,7 +2,7 @@
 
 ## 2.1 They classify the problem, not an algorithm
 
-A statement like "Vertex Cover is NP-complete" is not a claim about a specific algorithm — it is a claim about the entire problem: no algorithm, among all possible ones, solves it in polynomial time in the worst case, unless `P = NP`. This is an important distinction: knowing that a problem sits in a class says something about its intrinsic structure, independent of how good you are at writing code.
+A statement like "Vertex Cover is NP-complete" is not a claim about a specific algorithm — it is a claim about the entire problem: no algorithm, among all possible ones, solves it in polynomial time in the worst case, unless $P = NP$. This is an important distinction: knowing that a problem sits in a class says something about its intrinsic structure, independent of how good you are at writing code.
 
 This is also why a proof of membership in NP (via certificate, [Section 1.3](01-decision-problems-p-np.md#13-the-class-np-definition-via-verifier-and-certificate)) and a proof of NP-completeness (via reduction, [Section 3](03-polynomial-many-one-reductions.md)) are so different in form: the first exhibits a concrete object (the verifier algorithm); the second is an *indirect, proof-by-contradiction-style* argument — it shows that a hypothetical fast algorithm for the problem would imply one for every problem in NP, which is believed to be impossible.
 
