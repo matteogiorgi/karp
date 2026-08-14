@@ -1,4 +1,4 @@
-# KARP
+# Karp All-Reductions Pipeline
 
 Una pipeline di riduzioni esplicite e tipizzate tra problemi NP-completi, verificata end-to-end contro un SAT solver reale — "reduction as compilation". Il nome è quello di Richard Karp, l'autore delle riduzioni many-one polinomiali che il progetto implementa e dei 21 problemi NP-completi che le collegano.
 
