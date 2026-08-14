@@ -49,8 +49,6 @@ The definition of NP is **asymmetric**: it talks about short certificates for ye
 
 This asymmetry is not an erudite detail: it resurfaces exactly when, in the section on reductions, the correctness of a reduction $f$ has to be argued in both directions, $x \in A \implies f(x) \in B$ and $x \notin A \implies f(x) \notin B$ — the second direction (preserving the *absence* of a solution) is typically the one that requires the real mathematical argument, because there is no certificate to exhibit to prove it for a single example.
 
----
-
 | | | |
 |:---|:---:|---:|
 | | [README](../README.md) | [Next: 2. What Complexity Classes Are For →](02-purpose-of-complexity-classes.md) |
