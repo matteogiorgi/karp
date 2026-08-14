@@ -1,35 +1,33 @@
 # Karp All-Reductions Pipeline
 
-Una pipeline di riduzioni esplicite e tipizzate tra problemi NP-completi, verificata end-to-end contro un SAT solver reale — "reduction as compilation". Il nome è quello di Richard Karp, l'autore delle riduzioni many-one polinomiali che il progetto implementa e dei 21 problemi NP-completi che le collegano.
+An explicit, typed pipeline of reductions between NP-complete problems, verified end-to-end against a real SAT solver — "reduction as compilation". The name is Richard Karp's, the author of the polynomial many-one reductions this project implements and of the 21 NP-complete problems that they connect.
 
-## Cos'è
+## What it is
 
-Ogni riduzione tra due problemi NP-completi (es. 3-SAT → Independent Set) è implementata come una funzione pura `f: IstanzaA → IstanzaB`, accompagnata da una mappa inversa sui certificati `g: CertificatoB → CertificatoA`. La correttezza non è solo dichiarata: viene messa alla prova con property-based testing, confrontando su istanze generate casualmente la risposta di un SAT solver reale (per 3-SAT) contro un oracolo di riferimento per il problema ridotto, e verificando che `g` ricostruisca sempre un certificato valido.
+Every reduction between two NP-complete problems (e.g. 3-SAT → Independent Set) is implemented as a pure function `f: InstanceA → InstanceB`, paired with an inverse map on certificates `g: CertificateB → CertificateA`. Correctness is not just claimed: it is put to the test with property-based testing, comparing on randomly generated instances the answer of a real SAT solver (for 3-SAT) against a reference oracle for the reduced problem, and checking that `g` always reconstructs a valid certificate.
 
-Catena implementata (deliberatamente piccola, per restare un progetto autocontenuto):
+Chain implemented (deliberately small, to stay a self-contained project):
 
 ```
-3-SAT → Independent Set → Vertex Cover (→ Clique per complemento)
+3-SAT → Independent Set → Vertex Cover (→ Clique by complementation)
 3-SAT → Subset Sum
 ```
 
-3-SAT è preso come radice della catena — la sua NP-completezza è citata (teorema di Cook–Levin) e assunta, non ridimostrata in codice.
+3-SAT is taken as the root of the chain — its NP-completeness is cited (the Cook–Levin theorem) and assumed, not re-proved in code.
 
-**Linguaggio: Go.** Deciso su R dopo un confronto diretto su tre assi (chiarezza del codice di riduzione, ergonomia del property testing, maturità del solver SAT disponibile in ciascun linguaggio) — l'ultimo è stato quello decisivo, dato che l'unico binding SAT in-process per R (`rpicosat`) risulta archiviato da CRAN dal 2022.
+**Language: Go.** Chosen over R after a direct comparison on three axes (clarity of the reduction code, ergonomics of property testing, maturity of the SAT solver available in each language) — the last one was decisive, since the only in-process SAT binding for R (`rpicosat`) has been archived from CRAN since 2022.
 
-## Stato del progetto
+## Project status
 
-- [x] Relazione teorica (sezioni 1–6)
-- [ ] Implementazione Go delle riduzioni
-- [ ] Property test contro l'oracolo SAT
+- [x] Theoretical report (sections 1–6)
+- [ ] Go implementation of the reductions
+- [ ] Property tests against the SAT oracle
 
-## Relazione teorica
+## Theoretical report
 
-Il documento completo è in [`docs/relazione.md`](docs/relazione.md). Indice:
-
-1. [Problemi di decisione, P e NP](docs/relazione.md#1-problemi-di-decisione-p-e-np) — linguaggi, la classe P, NP a verificatore+certificato, l'equivalenza con le macchine di Turing non deterministiche, e l'asimmetria NP/co-NP.
-2. [A cosa servono le classi di complessità](docs/relazione.md#2-a-cosa-servono-le-classi-di-complessità) — classificano il problema non l'algoritmo, sono robuste rispetto al modello di calcolo, danno un vocabolario comune a domini diversi, trasferiscono risultati negativi.
-3. [Riduzioni many-one polinomiali](docs/relazione.md#3-riduzioni-many-one-polinomiali) — la definizione di Karp, e perché il progetto usa solo quella (e non le più generali riduzioni di Turing/Cook).
-4. [A cosa servono le riduzioni](docs/relazione.md#4-a-cosa-servono-le-riduzioni) — trasferimento di difficoltà in entrambe le direzioni, l'ordine indotto da `≤p`, e la nozione di completezza.
-5. [Come si usano in pratica](docs/relazione.md#5-come-si-usano-in-pratica-cooklevin-come-radice-poi-tutto-per-riduzione) — il teorema di Cook–Levin come radice, la normalizzazione SAT → 3-SAT, e la ricetta a due passi usata da ogni riduzione successiva.
-6. [Architettura della pipeline](docs/relazione.md#6-architettura-della-pipeline) — i componenti del codice (istanze tipizzate, riduzioni, oracoli, confine DIMACS) e la loro corrispondenza uno a uno con le sezioni precedenti.
+1. [Decision Problems, P and NP](docs/01-decision-problems-p-np.md) — languages, the class P, NP via verifier+certificate, the equivalence with nondeterministic Turing machines, and the NP/co-NP asymmetry.
+2. [What Complexity Classes Are For](docs/02-purpose-of-complexity-classes.md) — they classify the problem not the algorithm, they are robust with respect to the model of computation, they give a common vocabulary across domains, they transfer negative results.
+3. [Polynomial Many-One Reductions](docs/03-polynomial-many-one-reductions.md) — Karp's definition, and why the project uses only that (and not the more general Turing/Cook reductions).
+4. [What Reductions Are For](docs/04-purpose-of-reductions.md) — transferring difficulty in both directions, the order induced by `≤p`, and the notion of completeness.
+5. [Cook–Levin and Practice](docs/05-cook-levin-and-practice.md) — the Cook–Levin theorem as the root, the SAT → 3-SAT normalization, and the two-step recipe used by every subsequent reduction.
+6. [Pipeline Architecture](docs/06-pipeline-architecture.md) — the code's components (typed instances, reductions, oracles, the DIMACS boundary) and their one-to-one correspondence with the sections above.
