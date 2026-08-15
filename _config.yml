@@ -1,0 +1,14 @@
+# Gemfile, Gemfile.lock, and dotfiles are excluded from the Jekyll build by
+# default. README.md links directly to them (see "Project layout"), so they
+# need to be published too, or those links would 404 on GitHub Pages while
+# working fine on github.com's own file browser.
+# _layouts/ and _includes/ are NOT listed here on purpose: unlike the files
+# above, Jekyll always consumes them structurally (as templates) and never
+# copies them to the output as browsable files, no matter what `include`
+# says — confirmed by testing, not assumed. README.md links to those two
+# files as plain text, not as links, for that reason.
+include:
+  - Gemfile
+  - Gemfile.lock
+  - .gitignore
+  - _config.yml

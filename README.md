@@ -23,32 +23,47 @@ Vertex Cover and Clique are both one step from Independent Set, not from each ot
 ## Project status
 
 - [x] Theoretical report (sections 1–6)
-- [ ] Go implementation of the reductions
-- [ ] Property tests against the SAT oracle
+- [x] Types and verifiers for 3-SAT and Independent Set
+- [x] Reduction 3-SAT ≤p Independent Set (`f` and its certificate map `g`)
+- [x] Brute-force reference oracle
+- [x] Real SAT oracle (`gophersat`, via DIMACS)
+- [x] Property-based test for 3-SAT → Independent Set
+- [ ] Reduction Independent Set ≤p Vertex Cover
+- [ ] Reduction Independent Set ≤p Clique
+- [ ] Reduction 3-SAT ≤p Subset Sum
+- [ ] Property tests for the three reductions above
 
 ## Project layout
 
 | File | What it is |
 |---|---|
-| `go.mod`, `go.sum` | Go module definition (`github.com/matteogiorgi/karp`) and its two dependencies, `gophersat` and `rapid`. |
-| `doc.go` | Package-level doc comment: what the package is, and how to read it alongside `docs/`. |
-| `threesat.go` | Types and verifier for 3-SAT — `Literal`, `Clause3`, `ThreeSAT`, `Assignment` — the root problem of the reduction chain. |
-| `threesat_test.go` | Table-driven tests for `ThreeSAT.Verify`, including the duplicate-literal case a padded clause produces. |
-| `independent_set.go` | Types and verifier for Independent Set — `Graph`, `IndependentSet`, `VertexSet` — the first problem reduced from 3-SAT. |
-| `independent_set_test.go` | Table-driven tests for `IndependentSet.Verify`. |
-| `threesat_to_independent_set.go` | The reduction `f = ThreeSATToIndependentSet` (3-SAT ≤p Independent Set) and its certificate map `g = CertificateToAssignment`. |
-| `threesat_to_independent_set_test.go` | Structural test of the graph `f` builds, plus a hand-worked round trip through `f`, `g`, and both `Verify` methods. |
-| `oracle.go` | The generic brute-force reference oracle `BruteForceOracle` (enumerate every candidate certificate, call `Verify`), and `SolveIndependentSet`, its instantiation for `IndependentSet`. |
-| `oracle_test.go` | Tests for both the "yes" and "no" sides of the oracle, the universe-size safety cap, and its agreement with `ThreeSATToIndependentSet` end to end. |
-| `threesat_oracle.go` | `DIMACS`, the literal boundary to the solver, and `SolveThreeSAT`, the real SAT oracle — `gophersat` called in-process via its DIMACS-reading entry point. |
-| `threesat_oracle_test.go` | The exact DIMACS text for a hand-picked formula, the "yes" and "no" sides of the real oracle, and end-to-end agreement with the reduction and the brute-force oracle. |
-| `property_test.go` | `genThreeSAT`, the one `rapid` generator this project needs, and the property test running the four-check pipeline of docs/06-pipeline-architecture.md, §6.3 on hundreds of random instances. |
-| `docs/` | The theoretical report — see [Theoretical report](#theoretical-report) below for the section-by-section index. |
+| [`go.mod`](go.mod), [`go.sum`](go.sum) | Go module definition (`github.com/matteogiorgi/karp`) and its two dependencies, `gophersat` and `rapid`. |
+| [`doc.go`](doc.go) | Package-level doc comment: what the package is, and how to read it alongside `docs/`. |
+| [`threesat.go`](threesat.go) | Types and verifier for 3-SAT — `Literal`, `Clause3`, `ThreeSAT`, `Assignment` — the root problem of the reduction chain. |
+| [`threesat_test.go`](threesat_test.go) | Table-driven tests for `ThreeSAT.Verify`, including the duplicate-literal case a padded clause produces. |
+| [`independent_set.go`](independent_set.go) | Types and verifier for Independent Set — `Graph`, `IndependentSet`, `VertexSet` — the first problem reduced from 3-SAT. |
+| [`independent_set_test.go`](independent_set_test.go) | Table-driven tests for `IndependentSet.Verify`. |
+| [`threesat_to_independent_set.go`](threesat_to_independent_set.go) | The reduction `f = ThreeSATToIndependentSet` (3-SAT ≤p Independent Set) and its certificate map `g = CertificateToAssignment`. |
+| [`threesat_to_independent_set_test.go`](threesat_to_independent_set_test.go) | Structural test of the graph `f` builds, plus a hand-worked round trip through `f`, `g`, and both `Verify` methods. |
+| [`oracle.go`](oracle.go) | The generic brute-force reference oracle `BruteForceOracle` (enumerate every candidate certificate, call `Verify`), and `SolveIndependentSet`, its instantiation for `IndependentSet`. |
+| [`oracle_test.go`](oracle_test.go) | Tests for both the "yes" and "no" sides of the oracle, the universe-size safety cap, and its agreement with `ThreeSATToIndependentSet` end to end. |
+| [`threesat_oracle.go`](threesat_oracle.go) | `DIMACS`, the literal boundary to the solver, and `SolveThreeSAT`, the real SAT oracle — `gophersat` called in-process via its DIMACS-reading entry point. |
+| [`threesat_oracle_test.go`](threesat_oracle_test.go) | The exact DIMACS text for a hand-picked formula, the "yes" and "no" sides of the real oracle, and end-to-end agreement with the reduction and the brute-force oracle. |
+| [`property_test.go`](property_test.go) | `genThreeSAT`, the one `rapid` generator this project needs, and the property test running the four-check pipeline of docs/06-pipeline-architecture.md, §6.3 on hundreds of random instances. |
+| [`docs/`](docs/) | The theoretical report — see [Theoretical report](#theoretical-report) below for the section-by-section index. |
 | [`DEVLOG.md`](DEVLOG.md) | A running record of concrete bugs and design gaps found while building this project, and what was done about them — both in the GitHub Pages rendering pipeline and in the Go implementation. |
-| `_layouts/default.html` | The site's page layout (the default GitHub Pages theme's own template), which is where `_includes/head-custom.html` gets pulled in. |
-| `_includes/head-custom.html` | MathJax and Mermaid rendering, plus the footer-nav layout CSS, injected into every GitHub Pages build. |
-| `Gemfile`, `Gemfile.lock` | Pin the `github-pages` gem version so a local Jekyll build matches GitHub Pages exactly. |
-| `.gitignore` | Excludes Jekyll build artifacts (`_site/`, `.bundle/`) from version control. |
+
+The files below aren't part of the project itself — they only exist to make this repository browsable as a GitHub Pages site.
+
+---
+
+| File | What it is |
+|---|---|
+| `_layouts/default.html` | The site's page layout (the default GitHub Pages theme's own template), which is where `_includes/head-custom.html` gets pulled in. Not linked — Jekyll never publishes `_layouts/` as a browsable file, on GitHub Pages or in a local build. |
+| `_includes/head-custom.html` | MathJax and Mermaid rendering, plus the footer-nav layout CSS, injected into every GitHub Pages build. Not linked, for the same reason as `_layouts/` above. |
+| [`_config.yml`](_config.yml) | Forces Jekyll to publish `Gemfile`, `Gemfile.lock`, `.gitignore`, and itself (all excluded by default), so the links to them in this table don't 404 on the live site. |
+| [`Gemfile`](Gemfile), [`Gemfile.lock`](Gemfile.lock) | Pin the `github-pages` gem version so a local Jekyll build matches GitHub Pages exactly. |
+| [`.gitignore`](.gitignore) | Excludes build and tooling artifacts from version control — Jekyll's (`_site/`, `.bundle/`) and `rapid`'s (`testdata/rapid/`, its failure-reproduction files). |
 
 ## Theoretical report
 
