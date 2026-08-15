@@ -42,7 +42,13 @@ Even as a real table, it had no explicit width and shrank to fit its content, si
 
 **Fix**: switched to CSS Grid with `grid-template-columns: 1fr auto 1fr`. The middle, auto-sized column stays mathematically centered regardless of what the flanking columns contain, empty or not. Caught and fixed a second bug in the same change: the grid rule had accidentally been applied to both `tbody` and `tr`, nesting two grids and compressing the whole row into roughly half the page width.
 
-### 7. `vendor/` directory collision between Ruby and Go
+### 7. The footer-nav CSS broke README's own tables once it had two of them
+
+The grid layout from #6 was scoped with the selector `table:last-of-type`, on the assumption that the last table on any page is always the prev/README/next footer nav — true for every file in `docs/`, where that's the only table role that ever repeats. It stopped being true the moment README.md's "Project layout" section grew a second table (this same one, split by file group at the user's request): on that page, "the last table" became an ordinary two-column content table, which the footer-nav CSS then flattened into a three-column grid it was never shaped for — hiding its header, collapsing rows, and cutting text off at the edge. Confirmed on the live GitHub Pages site, not just suspected: the same content rendered correctly on github.com (which doesn't see this stylesheet at all) and broken on the published Pages site, which is what made the two screenshots look so different for what was, in the underlying Markdown, an ordinary table.
+
+**Fix**: replaced the positional selector with a `.nav-footer-table` class, added by a small script that inspects every table's header row and tags it only if every header cell is blank — the one trait that is actually unique to the footer nav (its header exists solely to satisfy kramdown's "a table needs a data row below its header" rule from #5, so it is never real content) and does not depend on where the table sits on the page or how many other tables precede it.
+
+### 8. `vendor/` directory collision between Ruby and Go
 
 Jekyll's bundler had been installing gems into `vendor/bundle`. The moment a Go module was added to the same repository, Go's toolchain auto-detected the top-level `vendor/` directory as its own vendoring convention and every `go` command (`go build`, `go doc`, ...) failed with an "inconsistent vendoring" error.
 
@@ -50,25 +56,25 @@ Jekyll's bundler had been installing gems into `vendor/bundle`. The moment a Go 
 
 ## Go implementation
 
-### 8. `IndependentSet.Verify` accepted certificates naming vertices outside the graph
+### 9. `IndependentSet.Verify` accepted certificates naming vertices outside the graph
 
 `Verify` counted every distinct index in a certificate toward the required size `K` without ever checking that the index was a real vertex (`0 <= v < NumVertices`). A certificate padded with enough out-of-range "phantom" indices could reach size `K` and be accepted, because no edge in the graph ever touches a vertex that doesn't exist — so the independence check could never disqualify it. This is a genuine violation of the formal definition: an independent set is by definition a subset of `V`, not an arbitrary set of integers.
 
 **Fix**: added the bounds check at the top of `Verify`, with a dedicated regression test (a certificate of `{0, 99}` on a 4-vertex graph, which must be rejected despite reaching the required size).
 
-### 9. Stale doc comment
+### 10. Stale doc comment
 
 `IndependentSet`'s doc comment still said `ThreeSATToIndependentSet` was "not yet written in this package," left over from before the reduction was actually written in its own file.
 
 **Fix**: updated the comment to point at `threesat_to_independent_set.go`.
 
-### 10. The property-test generator produced ~97.5% satisfiable instances
+### 11. The property-test generator produced ~97.5% satisfiable instances
 
 With `numVars` and `numClauses` both drawn independently and uniformly from `[1,5]`, measuring 2000 generated instances showed only 2.5% were unsatisfiable — meaning the "no" side of the pipeline's invariant (the real SAT oracle and the brute-force oracle agreeing a formula is *un*satisfiable) was exercised in only 2–3 of every 100 test cases. Measured before touching the generator, not assumed from first principles.
 
 **Fix**: after trying several ranges empirically and measuring each one, settled on `numVars ∈ [1,3]`, `numClauses ∈ [3,6]`, which raises the unsatisfiable share to roughly 8% — a meaningfully healthier mix for the same sample size.
 
-### 11. The brute-force oracle's safety cap does not imply a fast test suite
+### 12. The brute-force oracle's safety cap does not imply a fast test suite
 
 `maxBruteForceUniverse = 30` (in `oracle.go`) exists to turn a would-be-infinite enumeration into an immediate panic — it says nothing about how *slow* an instance under that cap can still be. Measuring the real worst case (a genuinely unsatisfiable instance, which forces full enumeration of every candidate) gave 13ms at 5 clauses, 140ms at 6, 1.35s at 7, ~13s at 8, and over two minutes at 9 — worse than the raw doubling of the subset count alone would suggest, because each candidate also costs O(edges) to check, and edge count grows with clause count too. The first fix attempted for #10 (raising `numClauses` up to 10) would have stayed safely within the 30-clause panic threshold while still risking a multi-minute single test case — especially once rapid's shrinking re-runs the property function many times over while searching for a minimal counterexample.
 
