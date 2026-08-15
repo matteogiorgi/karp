@@ -9,13 +9,16 @@ Every reduction between two NP-complete problems (e.g. 3-SAT → Independent Set
 Chain implemented (deliberately small, to stay a self-contained project):
 
 ```
-3-SAT → Independent Set → Vertex Cover (→ Clique by complementation)
+3-SAT → Independent Set → Vertex Cover      (set complement: same graph, S ↔ V∖S)
+                        └→ Clique            (graph complement: same S, in Ḡ)
 3-SAT → Subset Sum
 ```
 
+Vertex Cover and Clique are both one step from Independent Set, not from each other: Vertex Cover complements the *vertex set* (`k' = |V| − k`); Clique complements the *graph* and keeps the same set and `k`. The two `g` certificate maps are correspondingly different (set-complement vs. identity).
+
 3-SAT is taken as the root of the chain — its NP-completeness is cited (the Cook–Levin theorem) and assumed, not re-proved in code.
 
-**Language: Go.** Chosen over R after a direct comparison on three axes (clarity of the reduction code, ergonomics of property testing, maturity of the SAT solver available in each language) — the last one was decisive, since the only in-process SAT binding for R (`rpicosat`) has been archived from CRAN since 2022.
+**Language: Go.** Chosen over R after a direct comparison on three axes: static types make each reduction's structural invariants (e.g. a clause has exactly 3 literals) checked by the compiler instead of at runtime; `rapid`'s property-testing generators are plain imperative Go code with automatic shrinking, versus the more combinator-heavy style the same thing needs in R's `hedgehog`; and the only in-process SAT binding available for R, `rpicosat`, has been archived from CRAN since 2022 — installable only from source, a maintenance risk this project prefers not to carry rather than a hard blocker on its own.
 
 ## Project status
 

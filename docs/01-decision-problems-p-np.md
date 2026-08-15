@@ -47,7 +47,7 @@ Whether the inclusion is strict ($P \neq NP$) is the most famous open problem in
 
 The definition of NP is **asymmetric**: it talks about short certificates for yes-instances, and says nothing about how to quickly recognize no-instances. It is not obvious (and is itself an open problem related to P vs NP) that no-instances also have short certificates of their own negativity — this property defines the class **co-NP**, and whether $NP = \text{co-NP}$ is unknown.
 
-This asymmetry is not an erudite detail: it resurfaces exactly when, in the section on reductions, the correctness of a reduction $f$ has to be argued in both directions, $x \in A \implies f(x) \in B$ and $x \notin A \implies f(x) \notin B$ — the second direction (preserving the *absence* of a solution) is typically the one that requires the real mathematical argument, because there is no certificate to exhibit to prove it for a single example.
+This asymmetry is not an erudite detail: a structurally similar one resurfaces when, in the section on reductions, the correctness of a reduction $f$ has to be argued in both directions, $x \in A \implies f(x) \in B$ and $x \notin A \implies f(x) \notin B$ — the second direction (preserving the *absence* of a solution) is typically the one that requires the real mathematical argument, for an analogous reason: there is no certificate to exhibit to prove it for a single example. The resemblance is a useful intuition pump, not a formal identity — the reduction's "no ⟹ no" direction is a universal claim about the function $f$, not itself a co-NP membership statement.
 
 | | | |
 |:---|:---:|---:|
