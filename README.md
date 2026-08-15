@@ -6,7 +6,7 @@ An explicit, typed pipeline of reductions between NP-complete problems, verified
 
 Every reduction between two NP-complete problems (e.g. 3-SAT → Independent Set) is implemented as a pure function `f: InstanceA → InstanceB`, paired with an inverse map on certificates `g: CertificateB → CertificateA`. Correctness is not just claimed: it is put to the test with property-based testing, comparing on randomly generated instances the answer of a real SAT solver (for 3-SAT) against a reference oracle for the reduced problem, and checking that `g` always reconstructs a valid certificate.
 
-Chain implemented (deliberately small, to stay a self-contained project):
+The reduction chain (deliberately small, to stay a self-contained project — see [Project status](#project-status) below for how much of it is actually built so far):
 
 ```
 3-SAT → Independent Set → Vertex Cover      (set complement: same graph, S ↔ V∖S)
@@ -25,6 +25,30 @@ Vertex Cover and Clique are both one step from Independent Set, not from each ot
 - [x] Theoretical report (sections 1–6)
 - [ ] Go implementation of the reductions
 - [ ] Property tests against the SAT oracle
+
+## Project layout
+
+| File | What it is |
+|---|---|
+| `go.mod`, `go.sum` | Go module definition (`github.com/matteogiorgi/karp`) and its two dependencies, `gophersat` and `rapid`. |
+| `doc.go` | Package-level doc comment: what the package is, and how to read it alongside `docs/`. |
+| `threesat.go` | Types and verifier for 3-SAT — `Literal`, `Clause3`, `ThreeSAT`, `Assignment` — the root problem of the reduction chain. |
+| `threesat_test.go` | Table-driven tests for `ThreeSAT.Verify`, including the duplicate-literal case a padded clause produces. |
+| `independent_set.go` | Types and verifier for Independent Set — `Graph`, `IndependentSet`, `VertexSet` — the first problem reduced from 3-SAT. |
+| `independent_set_test.go` | Table-driven tests for `IndependentSet.Verify`. |
+| `threesat_to_independent_set.go` | The reduction `f = ThreeSATToIndependentSet` (3-SAT ≤p Independent Set) and its certificate map `g = CertificateToAssignment`. |
+| `threesat_to_independent_set_test.go` | Structural test of the graph `f` builds, plus a hand-worked round trip through `f`, `g`, and both `Verify` methods. |
+| `oracle.go` | The generic brute-force reference oracle `BruteForceOracle` (enumerate every candidate certificate, call `Verify`), and `SolveIndependentSet`, its instantiation for `IndependentSet`. |
+| `oracle_test.go` | Tests for both the "yes" and "no" sides of the oracle, the universe-size safety cap, and its agreement with `ThreeSATToIndependentSet` end to end. |
+| `threesat_oracle.go` | `DIMACS`, the literal boundary to the solver, and `SolveThreeSAT`, the real SAT oracle — `gophersat` called in-process via its DIMACS-reading entry point. |
+| `threesat_oracle_test.go` | The exact DIMACS text for a hand-picked formula, the "yes" and "no" sides of the real oracle, and end-to-end agreement with the reduction and the brute-force oracle. |
+| `property_test.go` | `genThreeSAT`, the one `rapid` generator this project needs, and the property test running the four-check pipeline of docs/06-pipeline-architecture.md, §6.3 on hundreds of random instances. |
+| `docs/` | The theoretical report — see [Theoretical report](#theoretical-report) below for the section-by-section index. |
+| [`DEVLOG.md`](DEVLOG.md) | A running record of concrete bugs and design gaps found while building this project, and what was done about them — both in the GitHub Pages rendering pipeline and in the Go implementation. |
+| `_layouts/default.html` | The site's page layout (the default GitHub Pages theme's own template), which is where `_includes/head-custom.html` gets pulled in. |
+| `_includes/head-custom.html` | MathJax and Mermaid rendering, plus the footer-nav layout CSS, injected into every GitHub Pages build. |
+| `Gemfile`, `Gemfile.lock` | Pin the `github-pages` gem version so a local Jekyll build matches GitHub Pages exactly. |
+| `.gitignore` | Excludes Jekyll build artifacts (`_site/`, `.bundle/`) from version control. |
 
 ## Theoretical report
 
