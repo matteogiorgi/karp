@@ -55,8 +55,6 @@ Vertex Cover and Clique are both one step from Independent Set, not from each ot
 
 The files below aren't part of the project itself — they only exist to make this repository browsable as a GitHub Pages site.
 
----
-
 | File | What it is |
 |---|---|
 | `_layouts/default.html` | The site's page layout (the default GitHub Pages theme's own template), which is where `_includes/head-custom.html` gets pulled in. Not linked — Jekyll never publishes `_layouts/` as a browsable file, on GitHub Pages or in a local build. |
