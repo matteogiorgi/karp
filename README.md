@@ -10,7 +10,7 @@ The reduction chain (deliberately small, to stay a self-contained project — se
 
 ```
 3-SAT → Independent Set → Vertex Cover      (set complement: same graph, S ↔ V∖S)
-                        └→ Clique            (graph complement: same S, in Ḡ)
+                        → Clique            (graph complement: same S, in Ḡ)
 3-SAT → Subset Sum
 ```
 
