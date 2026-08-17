@@ -30,7 +30,3 @@ An NP-complete problem is therefore, by construction, the hardest possible probl
 Taken literally, the definition is unusable as a direct proof tool: showing $A \le_p B$ for *every* $A \in NP$ — an infinite set of problems, in general not even explicitly enumerable — is not something that can be done by hand, problem by problem. The way out is the transitivity from 4.3: if a single problem $A_0$ is already known to be NP-complete, and $A_0 \le_p B$ is exhibited, then for every $A \in NP$ we have $A \le_p A_0 \le_p B$ by transitivity — i.e., the single reduction $A_0 \le_p B$ suffices to inherit *all* the infinitely many reductions the definition requires.
 
 This is exactly why this project can limit itself to building a **chain** of reductions (3-SAT → Independent Set → Vertex Cover → …) instead of starting over from the definition every time: each new link in the chain only requires a single reduction from the previous link, and NP-completeness propagates by transitivity along the whole chain. A single starting point remains to be justified outside this mechanism — the first link, the one that makes 3-SAT itself NP-complete without being able to rely on any previous problem. That is the content of the Cook–Levin theorem, the subject of the next section.
-
-| | | |
-|:---|:---:|---:|
-| [← Previous: 3. Polynomial Many-One Reductions](03-polynomial-many-one-reductions.md) | [README](../README.md) | [Next: 5. Cook–Levin and Practice →](05-cook-levin-and-practice.md) |

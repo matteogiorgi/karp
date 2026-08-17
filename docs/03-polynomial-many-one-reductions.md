@@ -20,7 +20,3 @@ Every many-one reduction is also a Turing reduction (just make a single query, w
 This project needs — and needs only — Karp's many-one notion, for a reason that goes beyond mere economy of means: **a single call, with no post-processing of the answer, is exactly the structure that makes reconstructing a certificate possible.** If $f(x) \in B$ with certificate $y_B$, and the transformation $f$ is known explicitly, one can often read $y_B$ "backward" through the structure of $f$ and obtain a certificate $y_A$ for $x \in A$ — this is precisely the role of the function $g$ introduced in the project's code ($g: \text{certificate}_B \to \text{certificate}_A$). With a generic Turing reduction, involving multiple adaptive queries and arbitrary combination logic, this reconstruction has in general no clean form: there is no single instance of $B$ to "read backward" from.
 
 In the literature, when NP-completeness is referred to generically without specifying the type of reduction, the many-one notion is almost always the one meant — it is the notion Karp used in his 1972 paper on the 21 NP-complete problems, and it is the one adopted here.
-
-| | | |
-|:---|:---:|---:|
-| [← Previous: 2. What Complexity Classes Are For](02-purpose-of-complexity-classes.md) | [README](../README.md) | [Next: 4. What Reductions Are For →](04-purpose-of-reductions.md) |

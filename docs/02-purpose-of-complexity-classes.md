@@ -25,7 +25,3 @@ On the practical side, this negative result is also a guide: once a problem is k
 ## 2.5 A bridging note toward reductions
 
 P and NP, as defined here, talk about direct computation on a single problem: an algorithm, or a verifier, for *that* language. On their own they say nothing yet about how two problems compare to each other. The tool that builds that comparison — and that gives NP its internal structure, identifying within it the problems that are "hardest of all" — is the polynomial reduction, the subject of the next section.
-
-| | | |
-|:---|:---:|---:|
-| [← Previous: 1. Decision Problems, P and NP](01-decision-problems-p-np.md) | [README](../README.md) | [Next: 3. Polynomial Many-One Reductions →](03-polynomial-many-one-reductions.md) |

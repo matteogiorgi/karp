@@ -9,9 +9,9 @@ Every reduction between two NP-complete problems (e.g. 3-SAT → Independent Set
 The reduction chain (deliberately small, to stay a self-contained project — see [Project status](#project-status) below for how much of it is actually built so far):
 
 ```
-3-SAT → Independent Set → Vertex Cover      (set complement: same graph, S ↔ V∖S)
-                        → Clique            (graph complement: same S, in Ḡ)
-3-SAT → Subset Sum
+3-SAT -> Independent Set -> Vertex Cover      (set complement: same graph, S <-> V∖S)
+                         -> Clique            (graph complement: same S, in Ḡ)
+3-SAT -> Subset Sum
 ```
 
 Vertex Cover and Clique are both one step from Independent Set, not from each other: Vertex Cover complements the *vertex set* (`k' = |V| − k`); Clique complements the *graph* and keeps the same set and `k`. The two `g` certificate maps are correspondingly different (set-complement vs. identity).
@@ -52,16 +52,6 @@ Vertex Cover and Clique are both one step from Independent Set, not from each ot
 | [`property_test.go`](property_test.go) | `genThreeSAT`, the one `rapid` generator this project needs, and the property test running the four-check pipeline of docs/06-pipeline-architecture.md, §6.3 on hundreds of random instances. |
 | [`docs/`](docs/) | The theoretical report — see [Theoretical report](#theoretical-report) below for the section-by-section index. |
 | [`DEVLOG.md`](DEVLOG.md) | A running record of concrete bugs and design gaps found while building this project, and what was done about them — both in the GitHub Pages rendering pipeline and in the Go implementation. |
-
-The files below aren't part of the project itself — they only exist to make this repository browsable as a GitHub Pages site.
-
-| File | What it is |
-|---|---|
-| `_layouts/default.html` | The site's page layout (the default GitHub Pages theme's own template), which is where `_includes/head-custom.html` gets pulled in. Not linked — Jekyll never publishes `_layouts/` as a browsable file, on GitHub Pages or in a local build. |
-| `_includes/head-custom.html` | MathJax and Mermaid rendering, plus the footer-nav layout CSS, injected into every GitHub Pages build. Not linked, for the same reason as `_layouts/` above. |
-| [`_config.yml`](_config.yml) | Forces Jekyll to publish `Gemfile`, `Gemfile.lock`, `.gitignore`, and itself (all excluded by default), so the links to them in this table don't 404 on the live site. |
-| [`Gemfile`](Gemfile), [`Gemfile.lock`](Gemfile.lock) | Pin the `github-pages` gem version so a local Jekyll build matches GitHub Pages exactly. |
-| [`.gitignore`](.gitignore) | Excludes build and tooling artifacts from version control — Jekyll's (`_site/`, `.bundle/`) and `rapid`'s (`testdata/rapid/`, its failure-reproduction files). |
 
 ## Theoretical report
 
