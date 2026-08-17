@@ -38,21 +38,21 @@ Vertex Cover and Clique are both one step from Independent Set, not from each ot
 
 | File | What it is |
 |---|---|
-| [`go.mod`](go.mod), [`go.sum`](go.sum) | Go module definition (`github.com/matteogiorgi/karp`) and its two dependencies, `gophersat` and `rapid`. |
-| [`doc.go`](doc.go) | Package-level doc comment: what the package is, and how to read it alongside `docs/`. |
-| [`threesat.go`](threesat.go) | Types and verifier for 3-SAT — `Literal`, `Clause3`, `ThreeSAT`, `Assignment` — the root problem of the reduction chain. |
-| [`threesat_test.go`](threesat_test.go) | Table-driven tests for `ThreeSAT.Verify`, including the duplicate-literal case a padded clause produces. |
-| [`independent_set.go`](independent_set.go) | Types and verifier for Independent Set — `Graph`, `IndependentSet`, `VertexSet` — the first problem reduced from 3-SAT. |
-| [`independent_set_test.go`](independent_set_test.go) | Table-driven tests for `IndependentSet.Verify`. |
-| [`threesat_to_independent_set.go`](threesat_to_independent_set.go) | The reduction `f = ThreeSATToIndependentSet` (3-SAT ≤p Independent Set) and its certificate map `g = CertificateToAssignment`. |
-| [`threesat_to_independent_set_test.go`](threesat_to_independent_set_test.go) | Structural test of the graph `f` builds, plus a hand-worked round trip through `f`, `g`, and both `Verify` methods. |
-| [`oracle.go`](oracle.go) | The generic brute-force reference oracle `BruteForceOracle` (enumerate every candidate certificate, call `Verify`), and `SolveIndependentSet`, its instantiation for `IndependentSet`. |
-| [`oracle_test.go`](oracle_test.go) | Tests for both the "yes" and "no" sides of the oracle, the universe-size safety cap, and its agreement with `ThreeSATToIndependentSet` end to end. |
-| [`threesat_oracle.go`](threesat_oracle.go) | `DIMACS`, the literal boundary to the solver, and `SolveThreeSAT`, the real SAT oracle — `gophersat` called in-process via its DIMACS-reading entry point. |
-| [`threesat_oracle_test.go`](threesat_oracle_test.go) | The exact DIMACS text for a hand-picked formula, the "yes" and "no" sides of the real oracle, and end-to-end agreement with the reduction and the brute-force oracle. |
-| [`property_test.go`](property_test.go) | `genThreeSAT`, the one `rapid` generator this project needs, and the property test running the four-check pipeline of docs/06-pipeline-architecture.md, §6.3 on hundreds of random instances. |
-| [`docs/`](docs/) | The theoretical report — see [Theoretical report](#theoretical-report) below for the section-by-section index. |
-| [`DEVLOG.md`](DEVLOG.md) | A running record of concrete bugs and design gaps found while building this project, and what was done about them — both in the GitHub Pages rendering pipeline and in the Go implementation. |
+| [`go.mod`](https://github.com/matteogiorgi/karp/blob/main/go.mod), [`go.sum`](https://github.com/matteogiorgi/karp/blob/main/go.sum) | Go module definition (`github.com/matteogiorgi/karp`) and its two dependencies, `gophersat` and `rapid`. |
+| [`doc.go`](https://github.com/matteogiorgi/karp/blob/main/doc.go) | Package-level doc comment: what the package is, and how to read it alongside `docs/`. |
+| [`threesat.go`](https://github.com/matteogiorgi/karp/blob/main/threesat.go) | Types and verifier for 3-SAT — `Literal`, `Clause3`, `ThreeSAT`, `Assignment` — the root problem of the reduction chain. |
+| [`threesat_test.go`](https://github.com/matteogiorgi/karp/blob/main/threesat_test.go) | Table-driven tests for `ThreeSAT.Verify`, including the duplicate-literal case a padded clause produces. |
+| [`independent_set.go`](https://github.com/matteogiorgi/karp/blob/main/independent_set.go) | Types and verifier for Independent Set — `Graph`, `IndependentSet`, `VertexSet` — the first problem reduced from 3-SAT. |
+| [`independent_set_test.go`](https://github.com/matteogiorgi/karp/blob/main/independent_set_test.go) | Table-driven tests for `IndependentSet.Verify`. |
+| [`threesat_to_independent_set.go`](https://github.com/matteogiorgi/karp/blob/main/threesat_to_independent_set.go) | The reduction `f = ThreeSATToIndependentSet` (3-SAT ≤p Independent Set) and its certificate map `g = CertificateToAssignment`. |
+| [`threesat_to_independent_set_test.go`](https://github.com/matteogiorgi/karp/blob/main/threesat_to_independent_set_test.go) | Structural test of the graph `f` builds, plus a hand-worked round trip through `f`, `g`, and both `Verify` methods. |
+| [`oracle.go`](https://github.com/matteogiorgi/karp/blob/main/oracle.go) | The generic brute-force reference oracle `BruteForceOracle` (enumerate every candidate certificate, call `Verify`), and `SolveIndependentSet`, its instantiation for `IndependentSet`. |
+| [`oracle_test.go`](https://github.com/matteogiorgi/karp/blob/main/oracle_test.go) | Tests for both the "yes" and "no" sides of the oracle, the universe-size safety cap, and its agreement with `ThreeSATToIndependentSet` end to end. |
+| [`threesat_oracle.go`](https://github.com/matteogiorgi/karp/blob/main/threesat_oracle.go) | `DIMACS`, the literal boundary to the solver, and `SolveThreeSAT`, the real SAT oracle — `gophersat` called in-process via its DIMACS-reading entry point. |
+| [`threesat_oracle_test.go`](https://github.com/matteogiorgi/karp/blob/main/threesat_oracle_test.go) | The exact DIMACS text for a hand-picked formula, the "yes" and "no" sides of the real oracle, and end-to-end agreement with the reduction and the brute-force oracle. |
+| [`property_test.go`](https://github.com/matteogiorgi/karp/blob/main/property_test.go) | `genThreeSAT`, the one `rapid` generator this project needs, and the property test running the four-check pipeline of docs/06-pipeline-architecture.md, §6.3 on hundreds of random instances. |
+| [`docs/`](https://github.com/matteogiorgi/karp/blob/main/docs/) | The theoretical report — see [Theoretical report](#theoretical-report) below for the section-by-section index. |
+| [`DEVLOG.md`](https://github.com/matteogiorgi/karp/blob/main/DEVLOG.md) | A running record of concrete bugs and design gaps found while building this project, and what was done about them — both in the GitHub Pages rendering pipeline and in the Go implementation. |
 
 ## Theoretical report
 
