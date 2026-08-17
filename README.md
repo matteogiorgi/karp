@@ -8,11 +8,12 @@ Every reduction between two NP-complete problems (e.g. 3-SAT → Independent Set
 
 The reduction chain (deliberately small, to stay a self-contained project — see [Project status](#project-status) below for how much of it is actually built so far):
 
-```
-3-SAT -> Independent Set -> Vertex Cover      (set complement: same graph, S <-> V∖S)
-                         -> Clique            (graph complement: same S, in Ḡ)
-3-SAT -> Subset Sum
-```
+| From | To | Note |
+|---|---|---|
+| 3-SAT | Independent Set | |
+| Independent Set | Vertex Cover | set complement: same graph, S ↔ V∖S |
+| Independent Set | Clique | graph complement: same S, in Ḡ |
+| 3-SAT | Subset Sum | |
 
 Vertex Cover and Clique are both one step from Independent Set, not from each other: Vertex Cover complements the *vertex set* (`k' = |V| − k`); Clique complements the *graph* and keeps the same set and `k`. The two `g` certificate maps are correspondingly different (set-complement vs. identity).
 
