@@ -40,6 +40,6 @@ Taken literally, the definition is unusable as a direct proof tool: showing $A \
 
 This is exactly why this project can limit itself to building a **chain** of reductions (3-SAT → Independent Set → Vertex Cover → …) instead of starting over from the definition every time: each new link in the chain only requires a single reduction from the previous link, and NP-completeness propagates by transitivity along the whole chain. A single starting point remains to be justified outside this mechanism — the first link, the one that makes 3-SAT itself NP-complete without being able to rely on any previous problem. That is the content of the Cook–Levin theorem, the subject of the next section.
 
----
+</br>
 
-[3 ←](03-polynomial-many-one-reductions.md) 4 [→ 5](05-cook-levin-and-practice.md)
+[§3](03-polynomial-many-one-reductions.md) — §4 — [§5](05-cook-levin-and-practice.md)
