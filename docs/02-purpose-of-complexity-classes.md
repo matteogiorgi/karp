@@ -38,6 +38,6 @@ On the practical side, this negative result is also a guide: once a problem is k
 
 P and NP, as defined here, talk about direct computation on a single problem: an algorithm, or a verifier, for *that* language. On their own they say nothing yet about how two problems compare to each other. The tool that builds that comparison — and that gives NP its internal structure, identifying within it the problems that are "hardest of all" — is the polynomial reduction, the subject of the next section.
 
-<br>
+<div style="height: 0.5em;"></div>
 
-[§1](01-decision-problems-p-np.md) — §2 — [§3](03-polynomial-many-one-reductions.md)
+<p align="center">[§1](01-decision-problems-p-np.md) — §2 — [§3](03-polynomial-many-one-reductions.md) — [§4](04-purpose-of-reductions.md) — [§5](05-cook-levin-and-practice.md) — [§6](06-pipeline-architecture.md)</p>

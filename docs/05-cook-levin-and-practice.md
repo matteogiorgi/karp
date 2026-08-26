@@ -49,6 +49,6 @@ The distinction already anticipated in [1.6](01-decision-problems-p-np.md#16-an-
 
 This distinction — a written proof for the universal statement, an executable check for the sample — is the thread that connects this report's theory to the code's architecture, the subject of the final section.
 
-<br>
+<div style="height: 0.5em;"></div>
 
-[§4](04-purpose-of-reductions.md) — §5 — [§6](06-pipeline-architecture.md)
+<p align="center">[§1](01-decision-problems-p-np.md) — [§2](02-purpose-of-complexity-classes.md) — [§3](03-polynomial-many-one-reductions.md) — [§4](04-purpose-of-reductions.md) — §5 — [§6](06-pipeline-architecture.md)</p>
