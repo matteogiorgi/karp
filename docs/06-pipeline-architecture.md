@@ -7,9 +7,9 @@ The pipeline is the executable counterpart of all the preceding theory. Its piec
 | Component | Role | Corresponds to |
 |---|---|---|
 | Typed instances | represent $x \in \Sigma^*$ for each problem (`ThreeSAT`, `IndependentSet`, `VertexCover`, `Clique`, `SubsetSum`) | the language $L$ ([1.1](01-decision-problems-p-np.md#11-decision-problems)) |
-| Per-type verifier | `Verify(instance, certificate) → bool`, one per problem | the verifier $V$ ([1.3](01-decision-problems-p-np.md#13-the-class-np-definition-via-verifier-and-certificate)) |
-| Reduction $f$ | a pure function `InstanceA → InstanceB` | the witness of $A \le_p B$ ([3.1](03-polynomial-many-one-reductions.md#31-definition)) |
-| Certificate map $g$ | a pure function `CertificateB → CertificateA` | the constructive direction of the biconditional ([1.3](01-decision-problems-p-np.md#13-the-class-np-definition-via-verifier-and-certificate), [5.4](05-cook-levin-and-practice.md#54-every-reduction-as-a-constructive-mini-proof)) |
+| Per-type verifier | `Verify(instance, certificate) -> bool`, one per problem | the verifier $V$ ([1.3](01-decision-problems-p-np.md#13-the-class-np-definition-via-verifier-and-certificate)) |
+| Reduction $f$ | a pure function `InstanceA -> InstanceB` | the witness of $A \le_p B$ ([3.1](03-polynomial-many-one-reductions.md#31-definition)) |
+| Certificate map $g$ | a pure function `CertificateB -> CertificateA` | the constructive direction of the biconditional ([1.3](01-decision-problems-p-np.md#13-the-class-np-definition-via-verifier-and-certificate), [5.4](05-cook-levin-and-practice.md#54-every-reduction-as-a-constructive-mini-proof)) |
 | SAT oracle | decides `ThreeSAT` for real, in practical time | the reference algorithm the chain is anchored to ([5.3](05-cook-levin-and-practice.md#53-the-practical-recipe--and-what-the-project-assumes-instead-of-proving)) |
 | Brute-force oracle | decides every other problem by enumerating candidates and calling `Verify` | the "naive" algorithm implicit in the definition of NP ([1.3](01-decision-problems-p-np.md#13-the-class-np-definition-via-verifier-and-certificate)) |
 | Instance generator | produces random `ThreeSAT` instances (property test) | the sampling that empirically corroborates the invariant ([5.4](05-cook-levin-and-practice.md#54-every-reduction-as-a-constructive-mini-proof)) |

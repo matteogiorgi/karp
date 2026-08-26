@@ -4,7 +4,7 @@ An explicit, typed pipeline of reductions between NP-complete problems, verified
 
 ## What it is
 
-Every reduction between two NP-complete problems (e.g. 3-SAT → Independent Set) is implemented as a pure function `f: InstanceA → InstanceB`, paired with an inverse map on certificates `g: CertificateB → CertificateA`. Correctness is not just claimed: it is put to the test with property-based testing, comparing on randomly generated instances the answer of a real SAT solver (for 3-SAT) against a reference oracle for the reduced problem, and checking that `g` always reconstructs a valid certificate.
+Every reduction between two NP-complete problems (e.g. 3-SAT → Independent Set) is implemented as a pure function `f: InstanceA -> InstanceB`, paired with an inverse map on certificates `g: CertificateB -> CertificateA`. Correctness is not just claimed: it is put to the test with property-based testing, comparing on randomly generated instances the answer of a real SAT solver (for 3-SAT) against a reference oracle for the reduced problem, and checking that `g` always reconstructs a valid certificate.
 
 The reduction chain (deliberately small, to stay a self-contained project — see [Project status](#project-status) below for how much of it is actually built so far):
 
