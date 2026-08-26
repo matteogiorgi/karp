@@ -64,6 +64,6 @@ The definition of NP is **asymmetric**: it talks about short certificates for ye
 
 This asymmetry is not an erudite detail: a structurally similar one resurfaces when, in the section on reductions, the correctness of a reduction $f$ has to be argued in both directions, $x \in A \implies f(x) \in B$ and $x \notin A \implies f(x) \notin B$ — the second direction (preserving the *absence* of a solution) is typically the one that requires the real mathematical argument, for an analogous reason: there is no certificate to exhibit to prove it for a single example. The resemblance is a useful intuition pump, not a formal identity — the reduction's "no ⟹ no" direction is a universal claim about the function $f$, not itself a co-NP membership statement.
 
-</br>
+<br>
 
 §1 — [§2](02-purpose-of-complexity-classes.md)

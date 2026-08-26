@@ -79,6 +79,6 @@ The entire description above is language-independent (it was designed that way, 
 
 With this section the report has completed the full circle announced at the start of the project: every reduction function in the code is a witness of $\le_p$ ([Section 3](03-polynomial-many-one-reductions.md)); every property test comparing the two oracles is the correctness condition of [Section 3.1](03-polynomial-many-one-reductions.md#31-definition) made executable; every map $g$ is the constructive direction of NP's certificate definition ([Section 1.3](01-decision-problems-p-np.md#13-the-class-np-definition-via-verifier-and-certificate)); and the entire chain rests, by transitivity ([Section 4.3](04-purpose-of-reductions.md#43-the-preorder-on-difficulty)), on a single fixed point that is cited but not re-proved — Cook–Levin ([Section 5](05-cook-levin-and-practice.md)). Theory and code remain two views of the same object, not two parallel projects.
 
-</br>
+<br>
 
 [§5](05-cook-levin-and-practice.md) — §6

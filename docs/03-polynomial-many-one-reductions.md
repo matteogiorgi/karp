@@ -24,6 +24,6 @@ This project needs — and needs only — Karp's many-one notion, for a reason t
 
 In the literature, when NP-completeness is referred to generically without specifying the type of reduction, the many-one notion is almost always the one meant — it is the notion Karp used in his 1972 paper on the 21 NP-complete problems, and it is the one adopted here.
 
-</br>
+<br>
 
 [§2](02-purpose-of-complexity-classes.md) — §3 — [§4](04-purpose-of-reductions.md)
