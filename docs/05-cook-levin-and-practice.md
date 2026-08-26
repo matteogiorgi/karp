@@ -12,11 +12,17 @@ $\text{SAT} \in NP$ is the easy part ([Section 1.3](01-decision-problems-p-np.md
 
 The result — $f(x) = \varphi_x$ — is, in every respect, a polynomial many-one reduction in the sense of [Section 3](03-polynomial-many-one-reductions.md), with $A = L$ and $B = \text{SAT}$. The difference from every other reduction in this project is **what** is being reduced: not one concrete combinatorial problem to another, but the *entire notion of verifiable computation* (any $L \in NP$, via its generic verifier $V$) to a single syntactic structure (a propositional formula). It is the only bridge between the definitional world (verifiers, Turing machines) and the combinatorial world (clauses, graphs, sets) in which every subsequent reduction lives — including the one used as this project's foundation.
 
+
+
+
 ## 5.2 From SAT to 3-SAT
 
 Cook–Levin, in its classical form, produces general SAT — formulas with clauses of arbitrary width. The root problem chosen for this project is **3-SAT** (clauses of width exactly 3), which requires one additional step — but of a completely different nature from the previous one: $\text{SAT} \le_p \text{3-SAT}$ is proved with a purely **syntactic** transformation, touching no computational semantics at all. Every wide clause is split into a chain of 3-literal clauses by introducing auxiliary variables ($(l_1 \lor l_2 \lor l_3 \lor l_4)$ becomes $(l_1 \lor l_2 \lor z) \land (\lnot z \lor l_3 \lor l_4)$, and so on for longer clauses), and clauses that are too short are padded by duplicating a literal. The transformation preserves satisfiability clause by clause and is evidently polynomial.
 
 It is worth noting the contrast explicitly: $\text{SAT} \le_p \text{3-SAT}$ is mechanical, almost administrative — it normalizes one syntactic form into another. Cook–Levin ($L \le_p \text{SAT}$ for every $L \in NP$) is the only reduction in the entire chain that *creates* difficulty out of nothing, in the sense that it compiles an entire model of computation into combinatorial structure. Every subsequent reduction in this project ([Section 6](06-pipeline-architecture.md)) resembles the second category more than the first in spirit — it moves difficulty that already exists from one combinatorial structure to another, never having to "invent" difficulty from scratch — but this still requires domain-specific structural insight, unlike the purely syntactic transformation just described.
+
+
+
 
 ## 5.3 The practical recipe — and what the project assumes instead of proving
 
@@ -29,6 +35,9 @@ In practice, nobody after Cook and Levin has ever again had to repeat step 2 in 
 
 **Explicit scope note**: this project **cites** the Cook–Levin theorem as an established fact (Section 5.1 describes its structure, without implementing it) and **assumes** that 3-SAT is NP-complete as a starting point — it does not prove this constructively in code. Building the Turing-machine-to-CNF compiler described in 5.1 is a separate project (a possible future extension, not a gap in this one). What this project *does* concretely is everything that comes after that anchoring: the chain $\text{3-SAT} \le_p \text{Independent Set}$, followed by two separate one-step reductions **out of** Independent Set — $\text{Independent Set} \le_p \text{Vertex Cover}$ (complementing the *vertex set* within the same graph, $S \leftrightarrow V \setminus S$) and $\text{Independent Set} \le_p \text{Clique}$ (complementing the *graph* itself and keeping the same set) — plus the branch $\text{3-SAT} \le_p \text{Subset Sum}$, each verified end-to-end against a real SAT solver used as the ground-truth oracle for 3-SAT instances. Vertex Cover and Clique are siblings one step from Independent Set, not a further link in a single line — a distinction worth keeping straight because their certificate maps $g$ are different (set-complement vs. identity).
 
+
+
+
 ## 5.4 Every reduction as a constructive mini-proof
 
 With the anchor to 3-SAT established, every reduction function $f$ written in this project's code is, literally, the concrete witness of one step of the recipe in 5.3: not an isolated exercise, but a link that inherits — by transitivity — the NP-completeness of the entire chain built up to that point.
@@ -39,3 +48,7 @@ The distinction already anticipated in [1.6](01-decision-problems-p-np.md#16-an-
 - the direction "no solution is ever lost" ($x \notin A \implies f(x) \notin B$) is a universal statement over *all* instances, and remains a mathematical proof written separately for each reduction — the property test against the SAT oracle ([Section 6](06-pipeline-architecture.md)) **corroborates it empirically on sampled instances**, it does not replace it.
 
 This distinction — a written proof for the universal statement, an executable check for the sample — is the thread that connects this report's theory to the code's architecture, the subject of the final section.
+
+---
+
+[4 ←](04-purpose-of-reductions.md) 5 [→ 6](06-pipeline-architecture.md)
