@@ -40,4 +40,4 @@ P and NP, as defined here, talk about direct computation on a single problem: an
 
 <div style="height: 0.5em;"></div>
 
-<p align="center" markdown="1">[#1](01-decision-problems-p-np.md) — #2 — [#3](03-polynomial-many-one-reductions.md) — [#4](04-purpose-of-reductions.md) — [#5](05-cook-levin-and-practice.md) — [#6](06-pipeline-architecture.md)</p>
+<p align="center" markdown="1">[**#1**](01-decision-problems-p-np.md) — **#2** — [**#3**](03-polynomial-many-one-reductions.md) — [**#4**](04-purpose-of-reductions.md) — [**#5**](05-cook-levin-and-practice.md) — [**#6**](06-pipeline-architecture.md)</p>

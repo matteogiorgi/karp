@@ -26,4 +26,4 @@ In the literature, when NP-completeness is referred to generically without speci
 
 <div style="height: 0.5em;"></div>
 
-<p align="center" markdown="1">[#1](01-decision-problems-p-np.md) — [#2](02-purpose-of-complexity-classes.md) — #3 — [#4](04-purpose-of-reductions.md) — [#5](05-cook-levin-and-practice.md) — [#6](06-pipeline-architecture.md)</p>
+<p align="center" markdown="1">[**#1**](01-decision-problems-p-np.md) — [**#2**](02-purpose-of-complexity-classes.md) — **#3** — [**#4**](04-purpose-of-reductions.md) — [**#5**](05-cook-levin-and-practice.md) — [**#6**](06-pipeline-architecture.md)</p>

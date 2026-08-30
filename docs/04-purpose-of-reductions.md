@@ -42,4 +42,4 @@ This is exactly why this project can limit itself to building a **chain** of red
 
 <div style="height: 0.5em;"></div>
 
-<p align="center" markdown="1">[#1](01-decision-problems-p-np.md) — [#2](02-purpose-of-complexity-classes.md) — [#3](03-polynomial-many-one-reductions.md) — #4 — [#5](05-cook-levin-and-practice.md) — [#6](06-pipeline-architecture.md)</p>
+<p align="center" markdown="1">[**#1**](01-decision-problems-p-np.md) — [**#2**](02-purpose-of-complexity-classes.md) — [**#3**](03-polynomial-many-one-reductions.md) — **#4** — [**#5**](05-cook-levin-and-practice.md) — [**#6**](06-pipeline-architecture.md)</p>
